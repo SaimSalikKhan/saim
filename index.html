@@ -1,0 +1,145 @@
+---
+layout: default
+title: "Home"
+---
+
+<!-- Hero Section -->
+<section class="py-24 text-center bg-white">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">{{ site.title }}</h1>
+    <p class="text-xl md:text-2xl text-gray-600 mb-8">{{ site.tagline }}</p>
+    <a href="{{ site.resume_url }}" class="inline-block bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-3 rounded transition">Download Résumé</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4 max-w-3xl">
+    <h2 class="text-3xl font-semibold text-gray-900 mb-6">About</h2>
+    <p class="text-gray-700 text-lg">{{ site.description }}</p>
+    <p class="text-gray-700 text-lg mt-4">
+      Saim Salik Khan is an HR alchemist at <strong>Tuscan Consulting</strong> and product leader for
+      <strong>WorkPlus</strong>, an internal HCM platform. He turns messy organisational challenges into meaningful solutions by
+      blending people science with product savvy. When he's not solving HR puzzles, he's learning Arabic or
+      volunteering in his community.
+    </p>
+  </div>
+</section>
+
+<!-- Expertise Section -->
+<section id="expertise" class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-semibold text-gray-900 mb-6">Expertise</h2>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {% for item in site.expertise %}
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <div class="text-primary mb-3">
+          <i data-lucide="{{ item.icon }}" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">{{ item.title }}</h3>
+        <p class="text-gray-600">{{ item.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Case Studies Section -->
+<section id="case-studies" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-semibold text-gray-900 mb-6">Case Studies</h2>
+    <div x-data="{ active: 0, items: {{ site.case_studies | jsonify }} }" class="relative">
+      <div class="overflow-hidden">
+        <template x-for="(caseStudy, index) in items" :key="index">
+          <div x-show="active === index" class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2">
+              <img :src="caseStudy.image" :alt="caseStudy.title" class="rounded-lg shadow w-full h-64 object-cover">
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="text-2xl font-semibold text-primary mb-2" x-text="caseStudy.title"></h3>
+              <p class="text-gray-700 mb-3" x-text="caseStudy.description"></p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li x-text="caseStudy.metric1"></li>
+                <li x-text="caseStudy.metric2"></li>
+              </ul>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="flex justify-center items-center mt-6 space-x-3">
+        <template x-for="(caseStudy, index) in items" :key="index">
+          <button @click="active = index" :class="{'bg-primary': active === index, 'bg-gray-300': active !== index}"
+                  class="w-3 h-3 rounded-full transition"></button>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-semibold text-gray-900 mb-6">Testimonials</h2>
+    <div x-data="{ active: 0, items: {{ site.testimonials | jsonify }} }" class="relative">
+      <div class="overflow-hidden">
+        <template x-for="(testimonial, index) in items" :key="index">
+          <div x-show="active === index" class="text-center max-w-2xl mx-auto">
+            <p class="text-xl italic text-gray-700 mb-4" x-text="testimonial.quote"></p>
+            <h4 class="text-lg font-semibold text-primary" x-text="testimonial.author"></h4>
+            <span class="text-gray-500" x-text="testimonial.role"></span>
+          </div>
+        </template>
+      </div>
+      <div class="flex justify-center items-center mt-6 space-x-3">
+        <template x-for="(testimonial, index) in items" :key="index">
+          <button @click="active = index" :class="{'bg-primary': active === index, 'bg-gray-300': active !== index}"
+                  class="w-3 h-3 rounded-full transition"></button>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-semibold text-gray-900 mb-6">Blog</h2>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {% for post in site.posts limit:6 %}
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">
+          <a href="{{ post.url }}" class="text-primary hover:underline">{{ post.title }}</a>
+        </h3>
+        <p class="text-gray-500 text-sm mb-2">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="text-gray-700">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20">
+  <div class="container mx-auto px-4 max-w-lg">
+    <h2 class="text-3xl font-semibold text-gray-900 mb-6">Contact</h2>
+    <form action="{{ site.formspree_endpoint }}" method="POST" class="space-y-4">
+      <div>
+        <label for="name" class="block text-gray-700">Name</label>
+        <input id="name" name="name" type="text" required
+               class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+      </div>
+      <div>
+        <label for="email" class="block text-gray-700">Email</label>
+        <input id="email" name="email" type="email" required
+               class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+      </div>
+      <div>
+        <label for="message" class="block text-gray-700">Message</label>
+        <textarea id="message" name="message" rows="4" required
+                  class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+      </div>
+      <button type="submit"
+              class="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded transition w-full">Send Message</button>
+    </form>
+  </div>
+</section>
