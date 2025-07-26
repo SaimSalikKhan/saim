@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.og_image }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Customise Tailwind theme to include a teal primary colour
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#14b8a6',
+            'primary-dark': '#0d9488'
+          }
+        }
+      }
+    };
+  </script>
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Alpine.js for simple interactivity -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  {% if site.google_analytics %}
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+</head>
+<body class="font-[Inter] text-gray-800 leading-relaxed bg-white">
+  <!-- Main content -->
+  {{ content }}
+  <script>
+    // Activate Lucide icons after DOM ready
+    document.addEventListener('DOMContentLoaded', function(){
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
