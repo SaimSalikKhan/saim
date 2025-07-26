@@ -1,0 +1,69 @@
+title: "Saim"
+description: "Personal branding site for Saim – HR alchemist and product maverick blending people, process and product."
+tagline: "HR Alchemist & Product Maverick"
+# URL to the site when deployed.  Replace <username> with your GitHub username if different.
+url: "https://SaimSalikKhan.github.io/saim"
+baseurl: "" # leave blank for project site on github pages
+resume_url: "#resume"  # update this to your résumé PDF once uploaded
+formspree_endpoint: "https://formspree.io/f/your-form-id"  # replace with your Formspree endpoint
+og_image: "https://source.unsplash.com/1200x630/?business,teamwork"  # Open Graph preview image
+google_analytics: ""  # your Google Analytics measurement ID
+
+# Expertise items displayed in the expertise grid.  Each entry should define a
+# title, description and a lucide icon name.  See https://lucide.dev/icons for options.
+expertise:
+  - title: "HR Strategy"
+    description: "Crafting people‑centric strategies that drive growth and culture."
+    icon: "users"
+  - title: "Talent Acquisition"
+    description: "Building winning teams with rigorous hiring and onboarding processes."
+    icon: "user-plus"
+  - title: "Product Management"
+    description: "Leading HCM product development from concept to release."
+    icon: "box"
+  - title: "Analytics & Insights"
+    description: "Translating complex HR data into actionable insights."
+    icon: "bar-chart-2"
+  - title: "Change Management"
+    description: "Guiding organisations through digital transformation."
+    icon: "refresh-cw"
+  - title: "Learning & Development"
+    description: "Designing programmes that unlock employee potential."
+    icon: "book"
+
+# Case studies for the carousel.  Each case study has a title, description, two
+# metric lines and an image URL.  Images are loaded from Unsplash using the
+# source API; update these links to your own images if desired.
+case_studies:
+  - title: "Streamlining Recruitment for a FinTech Start‑up"
+    description: "Implemented an end‑to‑end talent acquisition pipeline that reduced time‑to‑hire and delighted candidates."
+    metric1: "Reduced time‑to‑hire by 40%"
+    metric2: "Achieved a 95% candidate satisfaction score"
+    image: "https://source.unsplash.com/600x400/?recruitment,team"
+  - title: "WorkPlus Roll‑out Across Retail Group"
+    description: "Led deployment of WorkPlus HCM across five regions, migrating thousands of employees onto a single platform."
+    metric1: "Unified HRIS for 2 000+ employees"
+    metric2: "Increased HR efficiency by 30%"
+    image: "https://source.unsplash.com/600x400/?technology,office"
+  - title: "Culture Transformation at a Manufacturing Giant"
+    description: "Designed a performance management framework that elevated engagement and retention."
+    metric1: "Improved engagement scores by 25%"
+    metric2: "Decreased turnover by 15%"
+    image: "https://source.unsplash.com/600x400/?factory,people"
+
+# Testimonials for the slider.  Each testimonial includes the quote, author and role.
+testimonials:
+  - quote: "Saim's strategic mindset and attention to detail transformed our hiring process. We couldn't have scaled without him."
+    author: "CEO"
+    role: "FinTech Co."
+  - quote: "Working with Saim on WorkPlus has been a masterclass in product management and empathy."
+    author: "Product Designer"
+    role: "WorkPlus"
+  - quote: "His ability to blend Islamic principles with modern HR practices is truly inspiring."
+    author: "HR Director"
+    role: "Retail Group"
+
+# Jekyll plugins used by this site
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
